@@ -15,13 +15,16 @@ export function reportSpan(span) {
   };
 
   console.log('report span:', payload);
-
   fetch('./send-trace', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
     },
     body: JSON.stringify(payload),
+  }).then(function() {
+      console.log("ok");
+  }).catch(function() {
+      console.log("error");
   });
 }
 
